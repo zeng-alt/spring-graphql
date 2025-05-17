@@ -160,7 +160,7 @@ public abstract class QuerydslDataFetcher<T> {
 		for (Map.Entry<String, Object> entry : arguments.entrySet()) {
 			Object value = entry.getValue();
 			if (value instanceof Map<?, ?> nested) {
-				addParameters(entry.getKey(), (Map<String, Object>) nested, parameters);
+				addParameters(((prefix != null) ? prefix + "." : "") + entry.getKey(), (Map<String, Object>) nested, parameters);
 				continue;
 			}
 			List<Object> values = (value instanceof List) ? (List<Object>) value : Collections.singletonList(value);
